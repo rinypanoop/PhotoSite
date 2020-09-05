@@ -1,0 +1,57 @@
+No of Photos - <%= @photos.count %>
+<table border="1">
+  <thead>
+  <tr>
+    <td>Image</td>
+    <td>Comments</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @photos.each do |photo| %>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <td>
+            <%= image_tag(photo.file_name , size: "160x150") %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Photo created at   <%= photo.date_time %>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+      <% if  photo.comments.size == 0 %>
+        <td>No comments</td>
+      <% end %>
+
+      <td>
+        <table>
+        <% photo.comments.each do |comment| %>
+        <tr>
+          <td>
+          <table>
+            <tr>
+              <td>
+                <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", user_photos_path(comment.user_id) %>
+                - <%= comment.comment_text %>
+              </td>
+            </tr>
+            <tr>
+              <td> Created At: <%= comment.date_time %></td>
+            </tr>
+          </table>
+
+          </td>
+        </tr>
+        <% end  %>
+        </table>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
