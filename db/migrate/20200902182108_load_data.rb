@@ -51,7 +51,7 @@ class LoadData < ActiveRecord::Migration[6.0]
     photo8.save(:validate => false)
 
     photo9 = Photo.new(:date_time => "2013-12-03 09:02:00",
-                       :file_name => "mhttps://s3.amazonaws.com/csueb.fall.2020/PhotoSite/megan1.jpg")
+                       :file_name => "https://s3.amazonaws.com/csueb.fall.2020/PhotoSite/megan1.jpg")
     photo9.user_id = mt.id
     photo9.save(:validate => false)
     photo10 = Photo.new(:date_time => "2013-12-03 09:03:00",
